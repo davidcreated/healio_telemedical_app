@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healio/verificationpages/otp_verification.dart';
+import 'package:healio/signinpages/signin.dart';
 
 // A simple, Flutter-friendly signup page with comments for beginners.
 class SignupPage extends StatefulWidget {
@@ -299,6 +300,13 @@ class _SignupPageState extends State<SignupPage> {
                         TextButton(
                           onPressed: () {
                             // Navigate to login page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const SignInPage(), // Make sure SignInPage is imported
+                              ),
+                            );
                           },
                           child: const Text(
                             'Login instead',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healio/signinpages/signin.dart';
 import 'package:healio/signup_pages.dart/signup_page.dart';
 
 class Splashpage3 extends StatefulWidget {
@@ -100,7 +101,7 @@ class _Splashpage3WidgetState extends State<Splashpage3>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Splashpage3(),
+                              builder: (context) => const SignInPage(),
                             ),
                           );
                         },
