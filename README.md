@@ -42,7 +42,7 @@ Here are some previews of the Healio app in action:
 
 ### 🏠 Home & Navigation
 
-
+![Home](https://github.com/user-attachments/assets/fab973c0-d9e7-497c-bd4a-071d69b0e6bd)
 
 
 
@@ -64,7 +64,7 @@ Here are some previews of the Healio app in action:
 │ ├── doctor/
 │ ├── appointments/
 │ ├── prescription/
-│ └── lab![Home](https://github.com/user-attachments/assets/fab973c0-d9e7-497c-bd4a-071d69b0e6bd)
+│ └── lab
 /
 ├── widgets/
 │ ├── custom_buttons.dart
