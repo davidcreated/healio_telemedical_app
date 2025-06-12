@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healio/verificationpages/otpverification2.dart';
 
 // A simple, Flutter-friendly OTP verification page with beginner comments.
 class OtpVerificationPage extends StatefulWidget {
@@ -113,7 +114,13 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 height: 44,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle OTP request logic here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const OtpVerification2Page(), // Replace OtpVerificationPage with your next page widget if needed
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
