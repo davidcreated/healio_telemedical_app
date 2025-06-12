@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:healio/verificationpages/emailverified.dart';
 
@@ -19,6 +20,24 @@ class _OtpVerification2PageState extends State<OtpVerification2Page> {
   // Focus nodes for each OTP digit field (for auto-focus)
   final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
 
+  int _counter = 15;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the countdown timer
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_counter > 0) {
+        setState(() {
+          _counter--;
+        });
+      } else {
+        _timer?.cancel();
+      }
+    });
+  }
+
   @override
   void dispose() {
     // Dispose all controllers and focus nodes to free resources
@@ -28,6 +47,7 @@ class _OtpVerification2PageState extends State<OtpVerification2Page> {
     for (final node in _focusNodes) {
       node.dispose();
     }
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -158,9 +178,10 @@ class _OtpVerification2PageState extends State<OtpVerification2Page> {
                   ),
                 ],
               ),
-              const Text(
-                'in 15 seconds',
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+              // Countdown timer
+              Text(
+                'in $_counter seconds',
+                style: const TextStyle(fontSize: 14, color: Colors.black54),
               ),
               const SizedBox(height: 40),
               // "Verify" button

@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 import 'package:healio/verificationpages/otpverification2.dart';
 
 // A simple, Flutter-friendly email verified page.
 // This page shows a success image and a button to continue to the home page.
-// All FlutterFlow properties are removed and replaced with standard Flutter code.
 
-class EmailVerifiedPage extends StatelessWidget {
+class EmailVerifiedPage extends StatefulWidget {
   const EmailVerifiedPage({super.key});
+
+  @override
+  State<EmailVerifiedPage> createState() => _EmailVerifiedPageState();
+}
+
+class _EmailVerifiedPageState extends State<EmailVerifiedPage> {
+  int _counter = 15;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the countdown timer
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_counter > 0) {
+        setState(() {
+          _counter--;
+        });
+      } else {
+        _timer?.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +44,6 @@ class EmailVerifiedPage extends StatelessWidget {
       backgroundColor: Colors.white, // Set background color
       body: SafeArea(
         child: SingleChildScrollView(
-          // <-- Make the page vertically scrollable
           child: Column(
             mainAxisAlignment:
                 MainAxisAlignment.center, // Center content vertically
@@ -55,6 +83,15 @@ class EmailVerifiedPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 20),
+              // Countdown timer
+              Text(
+                'in $_counter seconds',
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
               const SizedBox(height: 50),
               // Continue to Home button
               SizedBox(
@@ -67,7 +104,7 @@ class EmailVerifiedPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const OtpVerification2Page(), // Replace OtpVerificationPage with your next page widget if needed
+                            const OtpVerification2Page(), // Replace with your next page widget if needed
                       ),
                     );
                   },
