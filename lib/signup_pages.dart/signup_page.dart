@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:healio/verificationpages/otp_verification.dart';
 
 // A simple, Flutter-friendly signup page with comments for beginners.
 class SignupPage extends StatefulWidget {
@@ -177,11 +176,15 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: agreeToTerms
-                            ? () {
-                                // Handle sign up logic here
-                              }
-                            : null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const OtpVerificationPage(), // Replace NextPage with your next page widget
+                            ),
+                          );
+                        },
                         style: ButtonStyle(
                           backgroundColor:
                               WidgetStateProperty.resolveWith<Color>(
