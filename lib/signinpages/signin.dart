@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:healio/Homepage/homepage.dart';
 import 'package:healio/forgotpassword/forgotpassword.dart';
+import 'package:healio/signup_pages.dart/signup_page.dart';
 
 // A Flutter-friendly Sign In page with all FlutterFlow properties removed.
 
@@ -136,6 +138,14 @@ class _SignInPageState extends State<SignInPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         // TODO: Add sign in logic and navigation
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const HomePage(), // Make sure HomePage is imported
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -166,6 +176,17 @@ class _SignInPageState extends State<SignInPage> {
                       GestureDetector(
                         onTap: () {
                           // TODO: Add navigation to sign up page
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const SignupPage(), // Make sure SignupPage is imported
+                            ),
+                          );
+                          // TODO: Add your reset password logic here
+
+                          // Navigate to the sign in page after resetting password
                         },
                         child: const Text(
                           'Sign Up here',

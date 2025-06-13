@@ -147,7 +147,16 @@ class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
                     height: 44,
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: Add your reset password logic and navigation here
+                        // TODO: Add your reset password logic here
+
+                        // Navigate to the sign in page after resetting password
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const SignInPage(), // Make sure SignInPage is imported
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
