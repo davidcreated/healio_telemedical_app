@@ -74,37 +74,37 @@ class _EmailVerifiedPageState extends State<EmailVerifiedPage> {
                     );
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
+                    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                      (Set<WidgetState> states) {
                         // This changes the button color on hover
-                        if (states.contains(MaterialState.hovered)) {
+                        if (states.contains(WidgetState.hovered)) {
                           return const Color(0xFF002180); // Blue on hover
                         }
                         return Colors.white; // Default color
                       },
                     ),
-                    foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
+                    foregroundColor: WidgetStateProperty.resolveWith<Color>(
+                      (Set<WidgetState> states) {
                         // This changes the text color on hover
-                        if (states.contains(MaterialState.hovered)) {
+                        if (states.contains(WidgetState.hovered)) {
                           return Colors.white;
                         }
                         return const Color(0xFF002180);
                       },
                     ),
-                    elevation: MaterialStateProperty.all(0),
-                    side: MaterialStateProperty.all(
+                    elevation: WidgetStateProperty.all(0),
+                    side: WidgetStateProperty.all(
                       const BorderSide(
                         color: Color(0xFF002180),
                         width: 2,
                       ),
                     ),
-                    shape: MaterialStateProperty.all(
+                    shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    textStyle: MaterialStateProperty.all(
+                    textStyle: WidgetStateProperty.all(
                       const TextStyle(
                         fontFamily: 'NotoSans',
                         fontSize: 20,
