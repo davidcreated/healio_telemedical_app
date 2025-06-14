@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healio/Homepage/drawerpage.dart';
+import 'package:healio/Homepage/prescription.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,8 +22,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
       // TODO: Add navigation logic for each tab if needed
-      // Example:
-      // if (index == 1) Navigator.push(context, MaterialPageRoute(builder: (_) => DoctorsPage()));
     });
   }
 
@@ -70,14 +68,6 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -96,20 +86,13 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
             ),
             Container(
               color: Colors.black,
-              width: 40,
+              width: 40, // This sets the width to 40, making the divider short
               height: 1,
               margin: const EdgeInsets.symmetric(vertical: 4),
+              alignment: Alignment.centerLeft, // Aligns the divider to the left
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -128,14 +111,6 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -154,14 +129,6 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -180,14 +147,6 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
             ),
             const SizedBox(height: 20),
             Container(
@@ -205,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.contain,
               ),
               title: const Text(
-                'Corporate Insurance & Partnerships',
+                'Wearable Devices & IOT Integration',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -213,21 +172,32 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DrawerPage(),
-                  ),
-                );
-              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              leading: Image.asset(
+                'assets/vectors/lab1.png',
+                width: 24,
+                height: 24,
+                fit: BoxFit.contain,
+              ),
+              title: const Text(
+                'Diagnostic Lab Integration',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'NotoSans',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Top bar with menu and profile
             const Padding(
@@ -323,7 +293,12 @@ class _HomePageState extends State<HomePage> {
                       image: 'assets/vectors/prescription.png',
                       label: 'Prescription',
                       onTap: () {
-                        // TODO: Navigate to Prescription page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PrescriptionWidget(),
+                          ),
+                        );
                       },
                     ),
                     const _HomeIconButton(
@@ -449,7 +424,25 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: _onNavBarTapped,
+        onTap: (index) {
+          if (index == 1) {
+            // Navigate to HomePage
+            Navigator.pushReplacementNamed(context, '/');
+          } else if (index == 2) {
+            // Navigate to Prescription page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PrescriptionWidget(),
+              ),
+            );
+          } else {
+            setState(() {
+              _selectedIndex = index;
+            });
+            // Add navigation for other tabs if needed
+          }
+        },
         selectedItemColor: const Color(0xFF094067),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
@@ -460,7 +453,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
+            icon: Icon(Icons.local_hospital),
             label: 'Doctors',
           ),
           BottomNavigationBarItem(
